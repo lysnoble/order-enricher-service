@@ -21,6 +21,9 @@ public class CustomerService {
     }
 
     public CustomerDTO getCustomerById(String id) {
+        if (id == null || id.isBlank()) {
+            throw new IllegalArgumentException("Unknown customerId " + id);
+        }
         CustomerDTO dto = customers.get(id);
         if (dto == null) throw new IllegalArgumentException("Unknown customerId " + id);
         return dto;
